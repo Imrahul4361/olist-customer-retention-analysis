@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olist Retention Dashboard</title>
+<meta name="description" content="Delivery performance, ratings and customer retention on the Olist marketplace (96,470 delivered orders).">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --blue: #2a78d6; --orange: #eb6834; --grey: #c3c2b7; --good: #006300;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --blue: #3987e5; --orange: #d95926; --grey: #4a4a46; --good: #0ca30c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --blue: #3987e5; --orange: #d95926; --grey: #4a4a46; --good: #0ca30c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1180px; margin: 0 auto; padding: 28px 16px 48px; }
+header { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+.sub { color: var(--ink2); margin: 0; max-width: 680px; }
+.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+label { color: var(--ink2); font-size: 13px; }
+select, button { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.tile, .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+.tile { padding: 14px 16px; }
+.tile .l { color: var(--ink2); font-size: 13px; }
+.tile .v { font-size: 28px; font-weight: 600; margin-top: 2px; }
+.tile .n { color: var(--muted); font-size: 12.5px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { padding: 18px 18px 12px; min-width: 0; }
+.card.wide { grid-column: 1 / -1; }
+.card h2 { font-size: 16px; margin: 0; }
+.card p.cap { color: var(--ink2); font-size: 13.5px; margin: 2px 0 10px; }
+.chart { position: relative; height: 280px; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--ink2); margin-bottom: 6px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--grid); }
+th { color: var(--ink2); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.recs { counter-reset: r; list-style: none; padding: 0; margin: 6px 0 4px; display: grid; gap: 10px; }
+.recs li { counter-increment: r; padding: 10px 12px 10px 44px; position: relative; border: 1px solid var(--grid); border-radius: 10px; }
+.recs li::before { content: counter(r); position: absolute; left: 12px; top: 10px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--blue); color: #fff; font-size: 12.5px; font-weight: 600; display: grid; place-items: center; }
+.recs b { display: block; }
+.recs span { color: var(--ink2); font-size: 13.5px; }
+.note { color: var(--muted); font-size: 12.5px; margin-top: 18px; }
+details { margin-top: 6px; } summary { color: var(--ink2); font-size: 13px; cursor: pointer; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .chart { height: 240px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Why don't Olist customers come back?</h1>
+      <p class="sub">Delivery performance, ratings and retention across 96,000+ delivered marketplace orders (Jan 2017 – Aug 2018).
+        Late deliveries wreck ratings, but repeat buying stays near 2% regardless, so retention needs its own programme.</p>
+    </div>
+    <div class="controls">
+      <label for="state">Customer state</label>
+      <select id="state"></select>
+      <button id="theme" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+    </div>
+  </header>
+
+  <section class="tiles" id="tiles" aria-label="Key metrics"></section>
+
+  <section class="grid">
+    <div class="card wide">
+      <h2>Late-delivery rate by month</h2>
+      <p class="cap">Three months (Nov 2017, Feb–Mar 2018) carry nearly half of all late orders. <span id="trendState"></span></p>
+      <div class="chart"><canvas id="cTrend" aria-label="Line chart of monthly late-delivery rate"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Every extra day late costs stars</h2>
+      <p class="cap">Average review by delivery date vs the promised date</p>
+      <div class="legend"><span><i style="background:var(--blue)"></i>On time / early</span><span><i style="background:var(--orange)"></i>Late</span></div>
+      <div class="chart"><canvas id="cDelay" aria-label="Bar chart of average review by delivery delay"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Few sellers cause most late orders</h2>
+      <p class="cap">Cumulative share of late orders vs share of sellers</p>
+      <div class="chart"><canvas id="cPareto" aria-label="Pareto curve of late orders by seller"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Long-haul lanes run 2× late</h2>
+      <p class="cap">Late rate on the 10 busiest seller → customer state lanes</p>
+      <div class="legend"><span><i style="background:var(--orange)"></i>1.5× national average or worse</span><span><i style="background:var(--blue)"></i>Other lanes</span></div>
+      <div class="chart"><canvas id="cRoutes" aria-label="Bar chart of late rate by route"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Bad experience ≠ lost customer</h2>
+      <p class="cap">180-day repeat rate by first-order experience (differences not significant, p &gt; 0.1)</p>
+      <div class="chart"><canvas id="cRepeat" aria-label="Bar chart of repeat rate by first order experience"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>First purchase category predicts loyalty</h2>
+      <p class="cap">180-day repeat rate by category of first order (p &lt; 0.001)</p>
+      <div class="legend"><span><i style="background:var(--blue)"></i>Above average</span><span><i style="background:var(--grey)"></i>Below average</span></div>
+      <div class="chart" style="height:340px"><canvas id="cCat" aria-label="Bar chart of repeat rate by category"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>Who to target</h2>
+      <p class="cap">Customer segments by recency and value</p>
+      <table id="tSeg"><thead><tr><th>Segment</th><th class="num">Customers</th><th class="num">% cust.</th><th class="num">% revenue</th></tr></thead><tbody></tbody></table>
+    </div>
+
+    <div class="card wide">
+      <h2>Recommendations</h2>
+      <ol class="recs">
+        <li><b>Peak-season playbook</b><span>Add carrier capacity and extend promised dates on long-haul lanes for Black Friday and Feb–Mar. Removes up to ~31% of late orders.</span></li>
+        <li><b>Lane-aware delivery promise</b><span>Set the promised date for SP→RJ / BA / ES / CE from each lane's actual delivery history; A/B test the effect on conversion.</span></li>
+        <li><b>Seller delivery SLA + watchlist</b><span>Monthly scorecard for the 65 chronic-late sellers: coaching first, reduced search ranking if no improvement.</span></li>
+        <li><b>Second-order CRM programme</b><span>Trigger offers between days 7 and 120 after the first purchase, led by high-repeat categories. +1 pp repeat ≈ R$120K / year; prove it with a holdout test.</span></li>
+        <li><b>Win-back for dormant high-value customers</b><span>16K customers (17%) who generated 41% of revenue and have not bought in ~10 months.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <details><summary>Data table: monthly metrics for the selected state</summary>
+    <table id="tMonth"><thead><tr><th>Month</th><th class="num">Orders</th><th class="num">Revenue (R$)</th><th class="num">Late %</th><th class="num">Avg review</th></tr></thead><tbody></tbody></table>
+  </details>
+  <p class="note">Source: Olist Brazilian e-commerce public dataset (CC BY-NC-SA 4.0). Delivered orders only; a repeat customer bought on two or more different days.
+    Built with SQL (DuckDB) + Python. Generated <span id="gen"></span>.</p>
+</main>
+
+<script>
+const D = /*DATA*/null;
+
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = (v, d = 0) => v.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+const compact = v => v >= 1e6 ? "R$" + fmt(v / 1e6, 1) + "M" : v >= 1e3 ? "R$" + fmt(v / 1e3, 0) + "K" : "R$" + fmt(v);
+let charts = [];
+
+function theme() {
+  return { ink: css("--ink"), ink2: css("--ink2"), muted: css("--muted"), grid: css("--grid"), axis: css("--axis"),
+           blue: css("--blue"), orange: css("--orange"), grey: css("--grey"), surface: css("--surface") };
+}
+
+function baseOpts(t, { y = {}, x = {}, horizontal = false, pct = false } = {}) {
+  const valueAxis = { beginAtZero: true, grid: { color: t.grid }, border: { color: t.axis },
+    ticks: { color: t.ink2, callback: v => pct ? v + "%" : v }, ...y };
+  const catAxis = { grid: { display: false }, border: { color: t.axis }, ticks: { color: t.ink2, autoSkip: false, maxRotation: 0, font: { size: innerWidth < 500 ? 9.5 : 12 } }, ...x };
+  return {
+    responsive: true, maintainAspectRatio: false, animation: false,
+    indexAxis: horizontal ? "y" : "x",
+    interaction: { mode: "nearest", intersect: false, axis: horizontal ? "y" : "x" },
+    plugins: { legend: { display: false },
+      tooltip: { backgroundColor: t.surface, titleColor: t.ink, bodyColor: t.ink2, borderColor: t.axis, borderWidth: 1, padding: 10 } },
+    scales: horizontal ? { x: valueAxis, y: catAxis } : { x: catAxis, y: valueAxis },
+  };
+}
+
+const bar = { borderRadius: 4, borderSkipped: "start", maxBarThickness: 24 };
+
+function stateRows(s) {
+  return s === "ALL" ? D.monthly_all : D.monthly_state.filter(r => r.customer_state === s);
+}
+
+function renderTiles(s) {
+  const rows = stateRows(s);
+  const o = rows.reduce((a, r) => a + r.orders, 0), rev = rows.reduce((a, r) => a + r.revenue, 0);
+  const late = rows.reduce((a, r) => a + r.late, 0), rn = rows.reduce((a, r) => a + r.reviews, 0);
+  const rs = rows.reduce((a, r) => a + r.review_sum, 0), neg = rows.reduce((a, r) => a + r.negative, 0);
+  const tiles = [
+    ["Delivered orders", fmt(o), s === "ALL" ? "Jan 2017 – Aug 2018" : "customers in " + s],
+    ["Revenue", compact(rev), "avg order R$" + fmt(rev / o, 0)],
+    ["Late-delivery rate", fmt(100 * late / o, 1) + "%", fmt(late) + " orders after promised date"],
+    ["Average review", fmt(rs / rn, 2) + " / 5", fmt(100 * neg / rn, 1) + "% are 1–2 stars"],
+    ["Repeat customers", fmt(D.kpi.repeat_customer_pct, 1) + "%", "all states · bought on 2+ days"],
+  ];
+  document.getElementById("tiles").innerHTML = tiles.map(([l, v, n]) =>
+    `<div class="tile"><div class="l">${l}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join("");
+  document.querySelector("#tMonth tbody").innerHTML = rows.map(r =>
+    `<tr><td>${r.month}</td><td class="num">${fmt(r.orders)}</td><td class="num">${fmt(r.revenue)}</td>
+     <td class="num">${fmt(100 * r.late / r.orders, 1)}</td><td class="num">${r.reviews ? fmt(r.review_sum / r.reviews, 2) : "–"}</td></tr>`).join("");
+  document.getElementById("trendState").textContent = s === "ALL" ? "" : `Showing ${s} vs all states (grey).`;
+}
+
+function draw() {
+  charts.forEach(c => c.destroy()); charts = [];
+  const t = theme(), s = document.getElementById("state").value;
+  renderTiles(s);
+
+  // 1. monthly trend
+  const all = D.monthly_all, rows = stateRows(s);
+  const byMonth = Object.fromEntries(rows.map(r => [r.month, r]));
+  const ds = [{ label: s === "ALL" ? "All states" : s, data: all.map(r => byMonth[r.month] ? +(100 * byMonth[r.month].late / byMonth[r.month].orders).toFixed(1) : null),
+    borderColor: t.blue, backgroundColor: t.blue + "1a", fill: true, borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: 0 }];
+  if (s !== "ALL") ds.push({ label: "All states", data: all.map(r => +(100 * r.late / r.orders).toFixed(1)),
+    borderColor: t.grey, borderWidth: 2, pointRadius: 0, pointHoverRadius: 4, fill: false });
+  const o1 = baseOpts(t, { pct: true, x: { ticks: { color: t.ink2, autoSkip: true, maxRotation: 0 } } });
+  o1.interaction = { mode: "index", intersect: false };
+  o1.plugins.tooltip.callbacks = { label: c => ` ${c.dataset.label}: ${c.parsed.y}% late` };
+  charts.push(new Chart(cTrend, { type: "line", data: { labels: all.map(r => r.month), datasets: ds }, options: o1 }));
+
+  // 2. reviews by delay
+  const dl = D.delay;
+  const o2 = baseOpts(t, { y: { max: 5 } });
+  o2.plugins.tooltip.callbacks = { label: c => ` ${c.parsed.y.toFixed(2)} stars · ${fmt(dl[c.dataIndex].orders)} orders · ${dl[c.dataIndex].negative_review_pct}% negative` };
+  charts.push(new Chart(cDelay, { type: "bar", data: { labels: dl.map(r => r.label),
+    datasets: [{ data: dl.map(r => r.avg_review), backgroundColor: dl.map(r => r.label.join(" ").includes("late") ? t.orange : t.blue), ...bar }] }, options: o2 }));
+
+  // 3. pareto
+  const pa = D.pareto;
+  const o3 = baseOpts(t, { pct: true, y: { max: 100 } });
+  o3.scales.x = { type: "linear", min: 0, max: 100, grid: { color: t.grid }, border: { color: t.axis }, ticks: { color: t.ink2, callback: v => v + "%" },
+                  title: { display: true, text: "share of sellers (ranked by late orders)", color: t.ink2 } };
+  o3.plugins.tooltip.callbacks = { title: () => "", label: c => ` top ${c.parsed.x}% of sellers → ${c.parsed.y}% of late orders` };
+  charts.push(new Chart(cPareto, { type: "line", data: { datasets: [{ data: pa.map(r => ({ x: r.x, y: r.y })), borderColor: t.blue, borderWidth: 2, pointRadius: 0, pointHoverRadius: 5 }] }, options: o3 }));
+
+  // 4. routes
+  const ro = D.routes, avg = D.kpi.late_rate_pct;
+  const o4 = baseOpts(t, { horizontal: true, pct: true });
+  o4.plugins.tooltip.callbacks = { label: c => ` ${c.parsed.x}% late · ${fmt(ro[c.dataIndex].orders)} orders · avg ${ro[c.dataIndex].avg_delivery_days} days` };
+  charts.push(new Chart(cRoutes, { type: "bar", data: { labels: ro.map(r => r.route),
+    datasets: [{ data: ro.map(r => r.late_rate_pct), backgroundColor: ro.map(r => r.late_rate_pct >= 1.5 * avg ? t.orange : t.blue), ...bar }] }, options: o4 }));
+
+  // 5. repeat vs experience
+  const re = D.repeat_exp;
+  const o5 = baseOpts(t, { pct: true, y: { max: 3 } });
+  o5.plugins.tooltip.callbacks = { label: c => ` ${c.parsed.y}% came back within 180 days (n = ${fmt(re[c.dataIndex].n)})` };
+  charts.push(new Chart(cRepeat, { type: "bar", data: { labels: re.map(r => r.label),
+    datasets: [{ data: re.map(r => r.pct), backgroundColor: t.blue, ...bar }] }, options: o5 }));
+
+  // 6. category
+  const ca = D.categories, cavg = D.cat_avg;
+  const o6 = baseOpts(t, { horizontal: true, pct: true });
+  o6.plugins.tooltip.callbacks = { label: c => ` ${c.parsed.x}% repeat · ${fmt(ca[c.dataIndex].customers)} customers` };
+  charts.push(new Chart(cCat, { type: "bar", data: { labels: ca.map(r => r.category.replaceAll("_", " ")),
+    datasets: [{ data: ca.map(r => r.repeat_180d_pct), backgroundColor: ca.map(r => r.repeat_180d_pct > cavg ? t.blue : t.grey), ...bar }] }, options: o6 }));
+}
+
+function init() {
+  document.getElementById("gen").textContent = D.generated;
+  const sel = document.getElementById("state");
+  sel.innerHTML = `<option value="ALL">All states</option>` + D.states.map(s => `<option>${s}</option>`).join("");
+  sel.addEventListener("change", draw);
+  document.querySelector("#tSeg tbody").innerHTML = D.segments.map(r =>
+    `<tr><td>${r.segment}</td><td class="num">${fmt(r.customers)}</td><td class="num">${fmt(r.pct_customers, 1)}%</td><td class="num">${fmt(r.pct_revenue, 1)}%</td></tr>`).join("");
+  document.getElementById("theme").addEventListener("click", () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("olist-theme", root.dataset.theme); } catch (e) {}
+    draw();
+  });
+  try { const saved = localStorage.getItem("olist-theme"); if (saved) document.documentElement.dataset.theme = saved; } catch (e) {}
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+  Chart.defaults.font.family = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+  draw();
+}
+init();
+</script>
+</body>
+</html>

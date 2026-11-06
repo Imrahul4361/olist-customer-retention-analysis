@@ -1,0 +1,88 @@
+# Power BI build guide (about 60-90 minutes)
+
+This guide rebuilds the dashboard in Power BI Desktop so you can put **Power BI** on your resume and
+demo it live. Every number should match the notebook; if one doesn't, your measure is wrong, which
+makes this a good self-check.
+
+## 1. Load the data
+
+1. Run `python src/run_sql.py`. This creates `data/processed/fact_orders.csv` and `dim_customers.csv`.
+2. Power BI Desktop → **Get data → Text/CSV** and load both files.
+3. In **Power Query**, set these types:
+   * `fact_orders`: `purchased_at`, `delivered_at`, `promised_at` → Date/Time; `purchase_date`, `purchase_month` → Date; `order_value`, `freight_value`, `items_price` → Fixed decimal
+   * `dim_customers`: `first_purchase_date`, `last_purchase_date` → Date
+4. **Model view:** relate `dim_customers[customer_id]` (1) → `fact_orders[customer_id]` (*), single direction.
+5. Add a date table and mark it as a date table, then relate `Dates[Date]` → `fact_orders[purchase_date]`:
+
+```DAX
+Dates = ADDCOLUMNS (
+    CALENDAR ( DATE ( 2017, 1, 1 ), DATE ( 2018, 8, 31 ) ),
+    "Month", FORMAT ( [Date], "yyyy-mm" ),
+    "Year", YEAR ( [Date] )
+)
+```
+
+## 2. Measures (create a `_Measures` table)
+
+```DAX
+Orders            = COUNTROWS ( fact_orders )
+Revenue           = SUM ( fact_orders[order_value] )
+Avg Order Value   = DIVIDE ( [Revenue], [Orders] )
+Late Orders       = SUM ( fact_orders[is_late] )
+Late Rate %       = DIVIDE ( [Late Orders], [Orders] )
+Avg Review        = AVERAGE ( fact_orders[review_score] )
+Negative Review % = DIVIDE ( SUM ( fact_orders[is_negative_review] ), COUNT ( fact_orders[review_score] ) )
+
+Customers         = DISTINCTCOUNT ( fact_orders[customer_id] )
+Repeat Customer % = DIVIDE (
+                        CALCULATE ( COUNTROWS ( dim_customers ), dim_customers[is_repeat] = 1 ),
+                        COUNTROWS ( dim_customers ) )
+
+-- share of ALL late orders that sit in the current filter (for Pareto / route views)
+Share of Late %   = DIVIDE ( [Late Orders], CALCULATE ( [Late Orders], ALL ( fact_orders ) ) )
+
+-- late rate vs national average, for conditional formatting (orange if >= 1.5)
+Late vs Avg       = DIVIDE ( [Late Rate %], CALCULATE ( [Late Rate %], ALL ( fact_orders ) ) )
+
+-- 180-day repeat for customers with a full window
+Repeat 180d %     = CALCULATE (
+                        AVERAGE ( dim_customers[repeat_180d] ),
+                        dim_customers[first_purchase_date] < DATE ( 2018, 3, 1 ) )
+```
+
+**Check your numbers:** Orders 96,470 · Revenue R$15.42M · Late Rate 8.11% · Avg Review 4.16 · Repeat Customer 2.16%.
+
+## 3. Calculated column for the delay buckets
+
+```DAX
+Delay Bucket =
+SWITCH ( TRUE (),
+    fact_orders[days_vs_promise] <= -10, "1. 10+ days early",
+    fact_orders[days_vs_promise] <= -1,  "2. 1-9 days early",
+    fact_orders[days_vs_promise] = 0,    "3. On promised day",
+    fact_orders[days_vs_promise] <= 3,   "4. 1-3 days late",
+    fact_orders[days_vs_promise] <= 7,   "5. 4-7 days late",
+    "6. 8+ days late" )
+```
+
+## 4. Report layout (one page, 16:9)
+
+| Position | Visual | Fields |
+|---|---|---|
+| Top row | 5 **cards** | Orders · Revenue · Late Rate % · Avg Review · Repeat Customer % |
+| Top right | **Slicer** (dropdown) | `fact_orders[customer_state]` |
+| Row 2, full width | **Line chart** | X: `Dates[Month]`, Y: `Late Rate %` |
+| Row 3 left | **Clustered column** | X: `Delay Bucket`, Y: `Avg Review`; conditional colour: late buckets orange |
+| Row 3 right | **Bar chart** | Y: `route` (Top N = 10 by Orders), X: `Late Rate %`; colour by `Late vs Avg` ≥ 1.5 → orange |
+| Row 4 left | **Bar chart** | Y: `dim_customers[first_order_category]`, X: `Repeat 180d %` (filter: customers ≥ 1,000) |
+| Row 4 right | **Table** | `segment` from `data/processed/customer_segments.csv` (load it as a 3rd table) |
+
+**Style rules (same as the Python charts):**
+* blue `#2A78D6` for normal values, orange `#EB6834` only for the problem
+* light grey gridlines, no 3D, no pie charts
+* every visual title states the insight, e.g. *"Long-haul lanes run 2x late"*, not *"Late rate by route"*
+
+## 5. Publish
+
+**File → Publish → My workspace**, then **Publish to web** (only for public data like this) to get a link for your
+resume and LinkedIn. Save the `.pbix` into `dashboard/` and add a screenshot to the README.

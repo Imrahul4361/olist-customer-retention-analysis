@@ -1,0 +1,10 @@
+table_name,n_rows
+raw_orders,99441
+raw_customers,99441
+raw_items,112650
+raw_payments,103886
+raw_reviews,99224
+raw_products,32951
+raw_sellers,3095
+fact_orders (delivered),96470
+dim_customers (people),93350

@@ -1,0 +1,2 @@
+delivered_orders,customers,sellers,revenue_brl,avg_order_value_brl,avg_review_score,late_rate_pct,avg_delivery_days,median_days_vs_promise,repeat_customer_pct,repeat_revenue_share_pct
+96470,93350,2959,15421083.0,159.86,4.16,8.11,12.5,-12.0,2.16,4.19

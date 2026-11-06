@@ -1,0 +1,3 @@
+delivery_status,orders,pct_of_orders,avg_review,negative_review_pct,negative_reviews,pct_of_all_negative_reviews
+Late,7661,8.0,2.57,54.0,4136.0,33.8
+On time / early,88163,92.0,4.29,9.2,8100.0,66.2

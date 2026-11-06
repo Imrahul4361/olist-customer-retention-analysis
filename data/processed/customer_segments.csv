@@ -1,0 +1,7 @@
+segment,customers,pct_customers,revenue_brl,pct_revenue,avg_value_brl,avg_recency_days
+"1. Loyal (repeat, active)",1076,1.2,351466.0,2.3,327.0,89.0
+2. Lapsed repeat buyers,939,1.0,294988.0,1.9,314.0,311.0
+3. New high-value (win 2nd order),5827,6.2,2320877.0,15.1,398.0,62.0
+4. New standard (win 2nd order),18188,19.5,1632435.0,10.6,90.0,61.0
+5. Dormant high-value,16169,17.3,6280794.0,40.7,388.0,303.0
+6. Dormant one-time,51151,54.8,4540521.0,29.4,89.0,303.0

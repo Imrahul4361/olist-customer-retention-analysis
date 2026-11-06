@@ -1,0 +1,6 @@
+gap_bucket,customers,pct,cumulative_pct
+1. within 30 days,600,29.8,29.8
+2. 31-90 days,507,25.2,54.9
+3. 91-180 days,423,21.0,75.9
+4. 181-365 days,401,19.9,95.8
+5. over 1 year,84,4.2,100.0

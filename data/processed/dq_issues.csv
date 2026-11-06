@@ -1,0 +1,8 @@
+issue,affected_rows,handling
+"customer_id is per ORDER, not per person",3345,use customer_unique_id as the real customer key
+orders with more than one review,547,average the scores
+delivered orders missing delivery date,8,excluded from fact_orders
+delivered orders without a review,646,kept; excluded only from rating metrics
+orders with more than one seller,1275,excluded from seller-level metrics only
+"same-day ""repeat"" orders (split baskets)",890,repeat customer = purchases on 2+ different days
+"sparse months (2016-09..12, 2018-09..10)",349,excluded from monthly trend charts
