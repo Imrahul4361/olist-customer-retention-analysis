@@ -1,0 +1,75 @@
+table customer_segments
+	lineageTag: a749aeb6-6899-a9f5-aa8d-71d76681cca2
+
+	column segment
+		dataType: string
+		lineageTag: 2b9adb53-b569-2ffb-5c0a-24a1912483b7
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column customers
+		dataType: int64
+		formatString: #,0
+		lineageTag: 84415cc1-06fb-1d5a-9d95-304b8c98ed71
+		summarizeBy: none
+		sourceColumn: customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_customers
+		dataType: double
+		formatString: 0.0"%"
+		lineageTag: ea109f84-890b-8525-447a-a9a97897ec9d
+		summarizeBy: none
+		sourceColumn: pct_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_brl
+		dataType: double
+		formatString: #,0
+		lineageTag: fc8a2b0b-0835-5a77-d054-b528bbee41ac
+		summarizeBy: none
+		sourceColumn: revenue_brl
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_revenue
+		dataType: double
+		formatString: 0.0"%"
+		lineageTag: 5c694c0a-be18-1cc0-0e8e-3774695926bf
+		summarizeBy: none
+		sourceColumn: pct_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_value_brl
+		dataType: double
+		formatString: #,0
+		lineageTag: c0c40b54-77ec-ae44-ea7e-796c1fd0137d
+		summarizeBy: none
+		sourceColumn: avg_value_brl
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_recency_days
+		dataType: double
+		formatString: 0
+		lineageTag: e5321ef2-cf58-3162-db8f-902c2bfc0b67
+		summarizeBy: none
+		sourceColumn: avg_recency_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition customer_segments = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "customer_segments.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"segment", type text}, {"customers", Int64.Type}, {"pct_customers", type number}, {"revenue_brl", type number}, {"pct_revenue", type number}, {"avg_value_brl", type number}, {"avg_recency_days", type number}}, "en-US")
+				in
+				    Typed
+

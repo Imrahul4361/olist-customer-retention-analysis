@@ -4,6 +4,7 @@
 
 1. download raw data      2. SQL model + analysis outputs   3. chart PNGs
 4. executed notebook      5. HTML dashboard                 6. slide deck
+7. Power BI project (PBIP)
 """
 from pathlib import Path
 import subprocess
@@ -17,6 +18,7 @@ STEPS = [
     "build_notebook.py",   # re-runs run_sql + charts inside the notebook too
     "build_dashboard.py",
     "build_deck.py",
+    "build_powerbi.py",
 ]
 
 

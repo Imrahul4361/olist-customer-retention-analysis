@@ -1,0 +1,343 @@
+table fact_orders
+	lineageTag: 5b85f1bb-1542-ef2b-e474-ca1d49423409
+
+	measure 'Orders' = COUNTROWS(fact_orders)
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: 98957d82-4f31-2293-1a9c-391f7cce5d97
+
+	measure 'Revenue' = SUM(fact_orders[order_value])
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: 3e3dfd87-141c-7092-3921-7dd622a56a28
+
+	measure 'Avg Order Value' = DIVIDE([Revenue], [Orders])
+		formatString: #,0.00
+		displayFolder: Volume
+		lineageTag: c69457a5-5f47-4ee3-4c1b-150cb725e5a3
+
+	measure 'Customers' = DISTINCTCOUNT(fact_orders[customer_id])
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: b32712bf-8679-9f3b-ba65-b2667170e50e
+
+	measure 'Sellers' = DISTINCTCOUNT(fact_orders[seller_id])
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: 6b173008-3376-23bd-56e4-e07b979748ea
+
+	measure 'Late Orders' = SUM(fact_orders[is_late])
+		formatString: #,0
+		displayFolder: Delivery
+		lineageTag: fc788350-e747-c709-5017-7111db9be768
+
+	measure 'Late Rate' = DIVIDE([Late Orders], [Orders])
+		formatString: 0.0%
+		displayFolder: Delivery
+		lineageTag: dec58af7-4ee0-2f85-8dff-03a835a269c8
+
+	measure 'Avg Delivery Days' = AVERAGE(fact_orders[delivery_days])
+		formatString: #,0.0
+		displayFolder: Delivery
+		lineageTag: 1e4e97fe-3889-8765-d219-95e0c882689a
+
+	measure 'Avg Days vs Promise' = AVERAGE(fact_orders[days_vs_promise])
+		formatString: #,0.0
+		displayFolder: Delivery
+		lineageTag: ae79e31b-43af-4800-2e81-545498ebff47
+
+	measure 'Share of Late Orders' = DIVIDE([Late Orders], CALCULATE([Late Orders], ALL(fact_orders)))
+		formatString: 0.0%
+		displayFolder: Delivery
+		lineageTag: 5d32faba-1e39-466d-a3cd-bc4146974507
+
+	measure 'Late vs National' = DIVIDE([Late Rate], CALCULATE([Late Rate], ALL(fact_orders)))
+		formatString: 0.00"x"
+		displayFolder: Delivery
+		lineageTag: 7a02c594-003c-912e-5478-53d9551ee91d
+
+	measure 'Avg Review' = AVERAGE(fact_orders[review_score])
+		formatString: #,0.00
+		displayFolder: Satisfaction
+		lineageTag: 05df89ca-f49f-a064-7448-4a575e54e446
+
+	measure 'Negative Review Rate' = DIVIDE(SUM(fact_orders[is_negative_review]), COUNT(fact_orders[review_score]))
+		formatString: 0.0%
+		displayFolder: Satisfaction
+		lineageTag: 8b6e8bac-f313-6922-cc80-153ac11c6a38
+
+	measure 'Freight Share' = DIVIDE(SUM(fact_orders[freight_value]), SUM(fact_orders[items_price]))
+		formatString: 0.0%
+		displayFolder: Volume
+		lineageTag: 1257825b-ef52-b5ca-ee1a-b3580a79d662
+
+	column order_id
+		dataType: string
+		lineageTag: e1865b0d-218b-9355-ca8c-a170b96fbfaa
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: e64a9db4-87bf-fd35-bd8f-524b1946dcce
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state
+		dataType: string
+		lineageTag: 44437efe-a2f9-fc1f-e162-d8feb65dc0e3
+		summarizeBy: none
+		sourceColumn: customer_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchased_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a740c22a-01cf-a366-e6df-f4f0064f5ef3
+		summarizeBy: none
+		sourceColumn: purchased_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 056dbbd0-151a-83d7-783b-cb1e69eadda0
+		summarizeBy: none
+		sourceColumn: purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		isHidden
+		lineageTag: d6e1b96e-c590-e49f-4ead-fa752bf974e4
+		summarizeBy: none
+		sourceColumn: purchase_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivered_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 959e9f7d-ec9a-b7fc-87d7-8431191ef91f
+		summarizeBy: none
+		sourceColumn: delivered_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column promised_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cd5cac50-a805-2071-a0c5-a9be99cb606a
+		summarizeBy: none
+		sourceColumn: promised_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_days
+		dataType: int64
+		formatString: 0
+		lineageTag: a3aee064-9c1f-1491-0059-81353423e06a
+		summarizeBy: none
+		sourceColumn: delivery_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_vs_promise
+		dataType: int64
+		formatString: 0
+		lineageTag: d53348d5-81c1-db0a-aabf-94c55f5296e1
+		summarizeBy: none
+		sourceColumn: days_vs_promise
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_late
+		dataType: int64
+		formatString: 0
+		lineageTag: 30668841-96c0-63b0-3aa8-8e11275d8bb0
+		summarizeBy: none
+		sourceColumn: is_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: double
+		formatString: 0.0
+		lineageTag: 32b881fe-d64a-4700-df82-95ee34fac092
+		summarizeBy: none
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_negative_review
+		dataType: int64
+		formatString: 0
+		lineageTag: ff0f5f8b-31fa-b259-820a-97c8c5c274ab
+		summarizeBy: none
+		sourceColumn: is_negative_review
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 74d827d5-b88b-0da7-31e8-95beea8fa1cf
+		summarizeBy: none
+		sourceColumn: order_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: fc1c654f-8785-8fb4-4289-b6ef8e092266
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column installments
+		dataType: int64
+		formatString: 0
+		lineageTag: 196f6baa-6632-8cb3-c275-6561f7d1e886
+		summarizeBy: none
+		sourceColumn: installments
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_items
+		dataType: int64
+		formatString: 0
+		lineageTag: c712652c-73d7-4e45-a9ea-b6e8cb0b57b3
+		summarizeBy: none
+		sourceColumn: n_items
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_sellers
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f5dcb4e-bda7-259a-2949-5925128e3e05
+		summarizeBy: none
+		sourceColumn: n_sellers
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: badbe4f8-66fc-b87a-c4bf-8586713795c8
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_state
+		dataType: string
+		lineageTag: af7340c6-e2d2-e644-966e-ac8a06a3a1a2
+		summarizeBy: none
+		sourceColumn: seller_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: decb9ea1-0ad1-4bf6-6a32-b63e088a4159
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column items_price
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 91dd0904-6f68-a43b-c671-79a8d55aa306
+		summarizeBy: none
+		sourceColumn: items_price
+
+		annotation SummarizationSetBy = Automatic
+
+	column freight_value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 476d40d5-65cb-0784-87ec-3f2d13ebcae8
+		summarizeBy: none
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column route
+		dataType: string
+		lineageTag: bb14c1b8-4768-babb-056e-91ecb396cee9
+		summarizeBy: none
+		sourceColumn: route
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 9c61c2f1-2997-d39b-6cc5-69e484d506fd
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 26229c76-e38c-9a0d-5721-dd34e3b2afc0
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Status'
+		dataType: string
+		lineageTag: 03917855-5db3-f940-ebe6-a7f75a218afd
+		summarizeBy: none
+		sourceColumn: Delivery Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delay Bucket'
+		dataType: string
+		lineageTag: f77861ea-8fe3-4804-c0b6-3a3ae264dd0f
+		summarizeBy: none
+		sourceColumn: Delay Bucket
+		sortByColumn: 'Delay Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delay Order'
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: a6aefc39-30f5-abde-e40b-d3734ebd167a
+		summarizeBy: none
+		sourceColumn: Delay Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_orders = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_orders.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"order_id", type text}, {"customer_id", type text}, {"customer_state", type text}, {"purchased_at", type datetime}, {"purchase_date", type date}, {"purchase_month", type datetime}, {"delivered_at", type datetime}, {"promised_at", type datetime}, {"delivery_days", Int64.Type}, {"days_vs_promise", Int64.Type}, {"is_late", Int64.Type}, {"review_score", type number}, {"is_negative_review", Int64.Type}, {"order_value", type number}, {"payment_type", type text}, {"installments", Int64.Type}, {"n_items", Int64.Type}, {"n_sellers", Int64.Type}, {"seller_id", type text}, {"seller_state", type text}, {"category", type text}, {"items_price", type number}, {"freight_value", type number}, {"route", type text}}, "en-US"),
+				    Filtered = Table.SelectRows(Typed, each [purchase_month] >= #datetime(2017,1,1,0,0,0) and [purchase_month] < #datetime(2018,9,1,0,0,0)),
+				    WithMonth = Table.AddColumn(Filtered, "Month", each Date.From([purchase_month]), type date),
+				    WithYear = Table.AddColumn(WithMonth, "Year", each Date.Year([purchase_month]), Int64.Type),
+				    WithStatus = Table.AddColumn(WithYear, "Delivery Status", each if [is_late] = 1 then "Late" else "On time / early", type text),
+				    WithBucket = Table.AddColumn(WithStatus, "Delay Bucket", each let d = [days_vs_promise] in if d = null then null else if d <= -10 then "10+ days early" else if d <= -1 then "1-9 days early" else if d = 0 then "On promised day" else if d <= 3 then "1-3 days late" else if d <= 7 then "4-7 days late" else "8+ days late", type text),
+				    WithOrder = Table.AddColumn(WithBucket, "Delay Order", each let d = [days_vs_promise] in if d = null then null else if d <= -10 then 1 else if d <= -1 then 2 else if d = 0 then 3 else if d <= 3 then 4 else if d <= 7 then 5 else 6, Int64.Type)
+				in
+				    WithOrder
+

@@ -1,0 +1,517 @@
+{
+  "config": "{\"version\": \"5.69\", \"themeCollection\": {\"baseTheme\": {\"name\": \"CY25SU12\", \"type\": 2, \"version\": {\"visual\": \"2.5.0\", \"report\": \"3.1.0\", \"page\": \"2.3.0\"}}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"linguisticSchemaSyncVersion\": 0, \"settings\": {\"useNewFilterPaneExperience\": true, \"allowChangeFilterTypes\": true, \"useStylableVisualContainerHeader\": true, \"queryLimitOption\": 6, \"useEnhancedTooltips\": true, \"exportDataMode\": 1, \"useDefaultAggregateDisplayName\": true}, \"objects\": {\"section\": [{\"properties\": {\"verticalAlignment\": {\"expr\": {\"Literal\": {\"Value\": \"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY25SU12",
+            "path": "BaseThemes/CY25SU12.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Executive Overview",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "cf057af4ccceb69b0529",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"2cc58245a8047d4eaa6e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 4, \"z\": 0, \"width\": 700, \"height\": 40, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Olist marketplace \\u00b7 Executive overview\", \"textStyle\": {\"fontFamily\": \"Segoe UI Semibold\", \"fontSize\": \"20pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 40,
+          "width": 700,
+          "x": 12,
+          "y": 4,
+          "z": 0
+        },
+        {
+          "config": "{\"name\": \"d2ff41517d2bd56c596e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 42, \"z\": 1, \"width\": 700, \"height\": 28, \"tabOrder\": 1}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"96K delivered orders, Jan 2017 \\u2013 Aug 2018 \\u00b7 every slicer and click filters the whole page\", \"textStyle\": {\"fontFamily\": \"Segoe UI\", \"fontSize\": \"11pt\", \"color\": \"#605E5C\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 28,
+          "width": 700,
+          "x": 12,
+          "y": 42,
+          "z": 1
+        },
+        {
+          "config": "{\"name\": \"ca63215cf52027458e48\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 732, \"y\": 8, \"z\": 10, \"width\": 128, \"height\": 62, \"tabOrder\": 10}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Year\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Year\"}, \"Name\": \"fact_orders.Year\", \"NativeReferenceName\": \"Year\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 732,
+          "y": 8,
+          "z": 10
+        },
+        {
+          "config": "{\"name\": \"de30e3938128fec1007c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 868, \"y\": 8, \"z\": 11, \"width\": 128, \"height\": 62, \"tabOrder\": 11}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.customer_state\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"customer_state\"}, \"Name\": \"fact_orders.customer_state\", \"NativeReferenceName\": \"customer_state\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 868,
+          "y": 8,
+          "z": 11
+        },
+        {
+          "config": "{\"name\": \"198102ca076f230bb50f\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1004, \"y\": 8, \"z\": 12, \"width\": 128, \"height\": 62, \"tabOrder\": 12}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.category\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"category\"}, \"Name\": \"fact_orders.category\", \"NativeReferenceName\": \"category\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 1004,
+          "y": 8,
+          "z": 12
+        },
+        {
+          "config": "{\"name\": \"98b164125d205fd6af53\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1140, \"y\": 8, \"z\": 13, \"width\": 128, \"height\": 62, \"tabOrder\": 13}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.payment_type\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"payment_type\"}, \"Name\": \"fact_orders.payment_type\", \"NativeReferenceName\": \"payment_type\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 1140,
+          "y": 8,
+          "z": 13
+        },
+        {
+          "config": "{\"name\": \"f67e9fcce44e942a4c5e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12.0, \"y\": 78, \"z\": 20, \"width\": 202.7, \"height\": 88, \"tabOrder\": 20}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Orders\"}, \"Name\": \"fact_orders.Orders\", \"NativeReferenceName\": \"Orders\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 12.0,
+          "y": 78,
+          "z": 20
+        },
+        {
+          "config": "{\"name\": \"d440b1ed832649b65adc\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 222.7, \"y\": 78, \"z\": 21, \"width\": 202.7, \"height\": 88, \"tabOrder\": 21}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Revenue\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Revenue\"}, \"Name\": \"fact_orders.Revenue\", \"NativeReferenceName\": \"Revenue\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 222.7,
+          "y": 78,
+          "z": 21
+        },
+        {
+          "config": "{\"name\": \"4bdf22499988f4a2ef90\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 433.3, \"y\": 78, \"z\": 22, \"width\": 202.7, \"height\": 88, \"tabOrder\": 22}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Avg Order Value\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Order Value\"}, \"Name\": \"fact_orders.Avg Order Value\", \"NativeReferenceName\": \"Avg Order Value\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 433.3,
+          "y": 78,
+          "z": 22
+        },
+        {
+          "config": "{\"name\": \"f81dd4ef9e961a24a6f4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644.0, \"y\": 78, \"z\": 23, \"width\": 202.7, \"height\": 88, \"tabOrder\": 23}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Late Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}, \"Name\": \"fact_orders.Late Rate\", \"NativeReferenceName\": \"Late Rate\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 644.0,
+          "y": 78,
+          "z": 23
+        },
+        {
+          "config": "{\"name\": \"55ee4607253087f953df\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 854.7, \"y\": 78, \"z\": 24, \"width\": 202.7, \"height\": 88, \"tabOrder\": 24}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Avg Review\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Review\"}, \"Name\": \"fact_orders.Avg Review\", \"NativeReferenceName\": \"Avg Review\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 854.7,
+          "y": 78,
+          "z": 24
+        },
+        {
+          "config": "{\"name\": \"aee313be14b162c4194e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1065.3, \"y\": 78, \"z\": 25, \"width\": 202.7, \"height\": 88, \"tabOrder\": 25}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Negative Review Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Negative Review Rate\"}, \"Name\": \"fact_orders.Negative Review Rate\", \"NativeReferenceName\": \"Negative Review Rate\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 1065.3,
+          "y": 78,
+          "z": 25
+        },
+        {
+          "config": "{\"name\": \"37df80a9043097406bbc\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 174, \"z\": 30, \"width\": 624, \"height\": 262, \"tabOrder\": 30}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.Month\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Late Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Month\"}, \"Name\": \"fact_orders.Month\", \"NativeReferenceName\": \"Month\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}, \"Name\": \"fact_orders.Late Rate\", \"NativeReferenceName\": \"Late Rate\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Month\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Late-delivery rate by month: spikes in Nov 2017 and Feb\\u2013Mar 2018'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 624,
+          "x": 12,
+          "y": 174,
+          "z": 30
+        },
+        {
+          "config": "{\"name\": \"591d5fb5d4a59b48c41d\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 174, \"z\": 31, \"width\": 624, \"height\": 262, \"tabOrder\": 31}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.Month\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Month\"}, \"Name\": \"fact_orders.Month\", \"NativeReferenceName\": \"Month\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Orders\"}, \"Name\": \"fact_orders.Orders\", \"NativeReferenceName\": \"Orders\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Month\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Orders by month'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 624,
+          "x": 644,
+          "y": 174,
+          "z": 31
+        },
+        {
+          "config": "{\"name\": \"539e65a6624969b7e8e0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 444, \"z\": 32, \"width\": 410, \"height\": 268, \"tabOrder\": 32}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.Delay Bucket\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Avg Review\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Delay Bucket\"}, \"Name\": \"fact_orders.Delay Bucket\", \"NativeReferenceName\": \"Delay Bucket\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Review\"}, \"Name\": \"fact_orders.Avg Review\", \"NativeReferenceName\": \"Avg Review\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Delay Bucket\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Every day late costs stars: avg review by delivery vs promise'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 410,
+          "x": 12,
+          "y": 444,
+          "z": 32
+        },
+        {
+          "config": "{\"name\": \"def81d92d3697086896e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 430, \"y\": 444, \"z\": 33, \"width\": 410, \"height\": 268, \"tabOrder\": 33}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.customer_state\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Late Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"customer_state\"}, \"Name\": \"fact_orders.customer_state\", \"NativeReferenceName\": \"customer_state\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}, \"Name\": \"fact_orders.Late Rate\", \"NativeReferenceName\": \"Late Rate\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Late rate by customer state'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 410,
+          "x": 430,
+          "y": 444,
+          "z": 33
+        },
+        {
+          "config": "{\"name\": \"c346d8b3c286a24f1338\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 848, \"y\": 444, \"z\": 34, \"width\": 420, \"height\": 268, \"tabOrder\": 34}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.category\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Revenue\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"category\"}, \"Name\": \"fact_orders.category\", \"NativeReferenceName\": \"category\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Revenue\"}, \"Name\": \"fact_orders.Revenue\", \"NativeReferenceName\": \"Revenue\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Revenue\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Revenue by product category'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 420,
+          "x": 848,
+          "y": 444,
+          "z": 34
+        }
+      ],
+      "width": 1280.0
+    },
+    {
+      "config": "{}",
+      "displayName": "Delivery & Sellers",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "c40d30b71469daff5669",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"8873693a2987b70f2c8b\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 4, \"z\": 0, \"width\": 700, \"height\": 40, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Delivery & sellers: where lateness comes from\", \"textStyle\": {\"fontFamily\": \"Segoe UI Semibold\", \"fontSize\": \"20pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 40,
+          "width": 700,
+          "x": 12,
+          "y": 4,
+          "z": 0
+        },
+        {
+          "config": "{\"name\": \"c7111ed3744f84be51ec\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 42, \"z\": 1, \"width\": 700, \"height\": 28, \"tabOrder\": 1}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Late = delivered after the date promised at checkout \\u00b7 tables sorted by late orders\", \"textStyle\": {\"fontFamily\": \"Segoe UI\", \"fontSize\": \"11pt\", \"color\": \"#605E5C\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 28,
+          "width": 700,
+          "x": 12,
+          "y": 42,
+          "z": 1
+        },
+        {
+          "config": "{\"name\": \"0fc28bfed812962428d9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 732, \"y\": 8, \"z\": 10, \"width\": 128, \"height\": 62, \"tabOrder\": 10}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Year\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Year\"}, \"Name\": \"fact_orders.Year\", \"NativeReferenceName\": \"Year\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 732,
+          "y": 8,
+          "z": 10
+        },
+        {
+          "config": "{\"name\": \"8fc8607865238d38e2c0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 868, \"y\": 8, \"z\": 11, \"width\": 128, \"height\": 62, \"tabOrder\": 11}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.customer_state\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"customer_state\"}, \"Name\": \"fact_orders.customer_state\", \"NativeReferenceName\": \"customer_state\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 868,
+          "y": 8,
+          "z": 11
+        },
+        {
+          "config": "{\"name\": \"4ee3b2d972bd74aa4b15\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1004, \"y\": 8, \"z\": 12, \"width\": 128, \"height\": 62, \"tabOrder\": 12}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.seller_state\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"seller_state\"}, \"Name\": \"fact_orders.seller_state\", \"NativeReferenceName\": \"seller_state\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 1004,
+          "y": 8,
+          "z": 12
+        },
+        {
+          "config": "{\"name\": \"7fd801a1a85f68c319cf\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1140, \"y\": 8, \"z\": 13, \"width\": 128, \"height\": 62, \"tabOrder\": 13}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.category\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"category\"}, \"Name\": \"fact_orders.category\", \"NativeReferenceName\": \"category\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 1140,
+          "y": 8,
+          "z": 13
+        },
+        {
+          "config": "{\"name\": \"2b503543ce365014e5fa\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12.0, \"y\": 78, \"z\": 20, \"width\": 202.7, \"height\": 88, \"tabOrder\": 20}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Late Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Orders\"}, \"Name\": \"fact_orders.Late Orders\", \"NativeReferenceName\": \"Late Orders\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 12.0,
+          "y": 78,
+          "z": 20
+        },
+        {
+          "config": "{\"name\": \"21330662964391ceff52\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 222.7, \"y\": 78, \"z\": 21, \"width\": 202.7, \"height\": 88, \"tabOrder\": 21}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Late Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}, \"Name\": \"fact_orders.Late Rate\", \"NativeReferenceName\": \"Late Rate\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 222.7,
+          "y": 78,
+          "z": 21
+        },
+        {
+          "config": "{\"name\": \"10618eb933bd846eeddd\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 433.3, \"y\": 78, \"z\": 22, \"width\": 202.7, \"height\": 88, \"tabOrder\": 22}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Share of Late Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Share of Late Orders\"}, \"Name\": \"fact_orders.Share of Late Orders\", \"NativeReferenceName\": \"Share of Late Orders\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 433.3,
+          "y": 78,
+          "z": 22
+        },
+        {
+          "config": "{\"name\": \"0f35abc8091dc0c8288c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644.0, \"y\": 78, \"z\": 23, \"width\": 202.7, \"height\": 88, \"tabOrder\": 23}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Avg Delivery Days\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Delivery Days\"}, \"Name\": \"fact_orders.Avg Delivery Days\", \"NativeReferenceName\": \"Avg Delivery Days\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 644.0,
+          "y": 78,
+          "z": 23
+        },
+        {
+          "config": "{\"name\": \"a2f0153d1dfdeab0c7a8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 854.7, \"y\": 78, \"z\": 24, \"width\": 202.7, \"height\": 88, \"tabOrder\": 24}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Avg Days vs Promise\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Days vs Promise\"}, \"Name\": \"fact_orders.Avg Days vs Promise\", \"NativeReferenceName\": \"Avg Days vs Promise\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 854.7,
+          "y": 78,
+          "z": 24
+        },
+        {
+          "config": "{\"name\": \"27aaf258829d553dbd5e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1065.3, \"y\": 78, \"z\": 25, \"width\": 202.7, \"height\": 88, \"tabOrder\": 25}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.Sellers\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Sellers\"}, \"Name\": \"fact_orders.Sellers\", \"NativeReferenceName\": \"Sellers\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 1065.3,
+          "y": 78,
+          "z": 25
+        },
+        {
+          "config": "{\"name\": \"3cb380618de71b9593a9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 174, \"z\": 30, \"width\": 624, \"height\": 262, \"tabOrder\": 30}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.route\"}, {\"queryRef\": \"fact_orders.Orders\"}, {\"queryRef\": \"fact_orders.Late Orders\"}, {\"queryRef\": \"fact_orders.Late Rate\"}, {\"queryRef\": \"fact_orders.Late vs National\"}, {\"queryRef\": \"fact_orders.Avg Delivery Days\"}, {\"queryRef\": \"fact_orders.Avg Review\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"route\"}, \"Name\": \"fact_orders.route\", \"NativeReferenceName\": \"route\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Orders\"}, \"Name\": \"fact_orders.Orders\", \"NativeReferenceName\": \"Orders\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Orders\"}, \"Name\": \"fact_orders.Late Orders\", \"NativeReferenceName\": \"Late Orders\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}, \"Name\": \"fact_orders.Late Rate\", \"NativeReferenceName\": \"Late Rate\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late vs National\"}, \"Name\": \"fact_orders.Late vs National\", \"NativeReferenceName\": \"Late vs National\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Delivery Days\"}, \"Name\": \"fact_orders.Avg Delivery Days\", \"NativeReferenceName\": \"Avg Delivery Days\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Review\"}, \"Name\": \"fact_orders.Avg Review\", \"NativeReferenceName\": \"Avg Review\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Orders\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Delivery lanes (seller state -> customer state)'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 624,
+          "x": 12,
+          "y": 174,
+          "z": 30
+        },
+        {
+          "config": "{\"name\": \"3702023a6536d05b4874\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 174, \"z\": 31, \"width\": 624, \"height\": 262, \"tabOrder\": 31}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.Month\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Late Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Month\"}, \"Name\": \"fact_orders.Month\", \"NativeReferenceName\": \"Month\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Orders\"}, \"Name\": \"fact_orders.Late Orders\", \"NativeReferenceName\": \"Late Orders\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Month\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Late orders by month: 3 peak months carry 46% of them'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 624,
+          "x": 644,
+          "y": 174,
+          "z": 31
+        },
+        {
+          "config": "{\"name\": \"be782dd7eb630b635299\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 444, \"z\": 32, \"width\": 624, \"height\": 268, \"tabOrder\": 32}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_orders.seller_id\"}, {\"queryRef\": \"fact_orders.seller_state\"}, {\"queryRef\": \"fact_orders.Orders\"}, {\"queryRef\": \"fact_orders.Late Orders\"}, {\"queryRef\": \"fact_orders.Late Rate\"}, {\"queryRef\": \"fact_orders.Share of Late Orders\"}, {\"queryRef\": \"fact_orders.Avg Review\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"seller_id\"}, \"Name\": \"fact_orders.seller_id\", \"NativeReferenceName\": \"seller_id\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"seller_state\"}, \"Name\": \"fact_orders.seller_state\", \"NativeReferenceName\": \"seller_state\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Orders\"}, \"Name\": \"fact_orders.Orders\", \"NativeReferenceName\": \"Orders\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Orders\"}, \"Name\": \"fact_orders.Late Orders\", \"NativeReferenceName\": \"Late Orders\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Rate\"}, \"Name\": \"fact_orders.Late Rate\", \"NativeReferenceName\": \"Late Rate\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Share of Late Orders\"}, \"Name\": \"fact_orders.Share of Late Orders\", \"NativeReferenceName\": \"Share of Late Orders\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Avg Review\"}, \"Name\": \"fact_orders.Avg Review\", \"NativeReferenceName\": \"Avg Review\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Late Orders\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Sellers ranked by late orders (102 sellers = 50% of all late)'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 624,
+          "x": 12,
+          "y": 444,
+          "z": 32
+        },
+        {
+          "config": "{\"name\": \"c2dd1051507efc6d391c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 444, \"z\": 33, \"width\": 306, \"height\": 268, \"tabOrder\": 33}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.Delay Bucket\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Negative Review Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Delay Bucket\"}, \"Name\": \"fact_orders.Delay Bucket\", \"NativeReferenceName\": \"Delay Bucket\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Negative Review Rate\"}, \"Name\": \"fact_orders.Negative Review Rate\", \"NativeReferenceName\": \"Negative Review Rate\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Delay Bucket\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'% of 1-2 star reviews by delay'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 306,
+          "x": 644,
+          "y": 444,
+          "z": 33
+        },
+        {
+          "config": "{\"name\": \"33cb267ab4c4053a1a68\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 958, \"y\": 444, \"z\": 34, \"width\": 310, \"height\": 268, \"tabOrder\": 34}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_orders.seller_state\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_orders.Share of Late Orders\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_orders\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"seller_state\"}, \"Name\": \"fact_orders.seller_state\", \"NativeReferenceName\": \"seller_state\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Share of Late Orders\"}, \"Name\": \"fact_orders.Share of Late Orders\", \"NativeReferenceName\": \"Share of Late Orders\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Share of Late Orders\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Share of late orders by seller state'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 310,
+          "x": 958,
+          "y": 444,
+          "z": 34
+        }
+      ],
+      "width": 1280.0
+    },
+    {
+      "config": "{}",
+      "displayName": "Customers & Retention",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "7d77841c1b8a9fa7cfac",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"16586c95fe50818bc2c0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 4, \"z\": 0, \"width\": 700, \"height\": 40, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Customers & retention: who comes back\", \"textStyle\": {\"fontFamily\": \"Segoe UI Semibold\", \"fontSize\": \"20pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 40,
+          "width": 700,
+          "x": 12,
+          "y": 4,
+          "z": 0
+        },
+        {
+          "config": "{\"name\": \"7336dd4cb235a8c8c4f8\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 42, \"z\": 1, \"width\": 700, \"height\": 28, \"tabOrder\": 1}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Repeat = bought on 2+ different days \\u00b7 180-day rate counts only customers with a full window\", \"textStyle\": {\"fontFamily\": \"Segoe UI\", \"fontSize\": \"11pt\", \"color\": \"#605E5C\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 28,
+          "width": 700,
+          "x": 12,
+          "y": 42,
+          "z": 1
+        },
+        {
+          "config": "{\"name\": \"d87b7e87e0cbe208b84f\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 868, \"y\": 8, \"z\": 10, \"width\": 128, \"height\": 62, \"tabOrder\": 10}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.customer_state\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"customer_state\"}, \"Name\": \"dim_customers.customer_state\", \"NativeReferenceName\": \"customer_state\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 868,
+          "y": 8,
+          "z": 10
+        },
+        {
+          "config": "{\"name\": \"c9a1aab85348bb984e98\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1004, \"y\": 8, \"z\": 11, \"width\": 128, \"height\": 62, \"tabOrder\": 11}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.first_order_category\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"first_order_category\"}, \"Name\": \"dim_customers.first_order_category\", \"NativeReferenceName\": \"first_order_category\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 1004,
+          "y": 8,
+          "z": 11
+        },
+        {
+          "config": "{\"name\": \"06b3b1701a2d214172ba\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1140, \"y\": 8, \"z\": 12, \"width\": 128, \"height\": 62, \"tabOrder\": 12}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.First Order Delivery\", \"active\": true}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"First Order Delivery\"}, \"Name\": \"dim_customers.First Order Delivery\", \"NativeReferenceName\": \"First Order Delivery\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {\"data\": [{\"properties\": {\"mode\": {\"expr\": {\"Literal\": {\"Value\": \"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 62,
+          "width": 128,
+          "x": 1140,
+          "y": 8,
+          "z": 12
+        },
+        {
+          "config": "{\"name\": \"4f22ae64100f82f6e656\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12.0, \"y\": 78, \"z\": 20, \"width\": 202.7, \"height\": 88, \"tabOrder\": 20}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.Customer Count\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Customer Count\"}, \"Name\": \"dim_customers.Customer Count\", \"NativeReferenceName\": \"Customer Count\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 12.0,
+          "y": 78,
+          "z": 20
+        },
+        {
+          "config": "{\"name\": \"cbfe7abd83ff0f91203c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 222.7, \"y\": 78, \"z\": 21, \"width\": 202.7, \"height\": 88, \"tabOrder\": 21}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.Repeat Customers\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat Customers\"}, \"Name\": \"dim_customers.Repeat Customers\", \"NativeReferenceName\": \"Repeat Customers\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 222.7,
+          "y": 78,
+          "z": 21
+        },
+        {
+          "config": "{\"name\": \"752f2f91e6ecc9a19404\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 433.3, \"y\": 78, \"z\": 22, \"width\": 202.7, \"height\": 88, \"tabOrder\": 22}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.Repeat Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat Rate\"}, \"Name\": \"dim_customers.Repeat Rate\", \"NativeReferenceName\": \"Repeat Rate\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 433.3,
+          "y": 78,
+          "z": 22
+        },
+        {
+          "config": "{\"name\": \"d18ed070284b9d1a5a6e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644.0, \"y\": 78, \"z\": 23, \"width\": 202.7, \"height\": 88, \"tabOrder\": 23}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.Repeat 180d Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat 180d Rate\"}, \"Name\": \"dim_customers.Repeat 180d Rate\", \"NativeReferenceName\": \"Repeat 180d Rate\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 644.0,
+          "y": 78,
+          "z": 23
+        },
+        {
+          "config": "{\"name\": \"8dcada054b838531fb21\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 854.7, \"y\": 78, \"z\": 24, \"width\": 202.7, \"height\": 88, \"tabOrder\": 24}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.Avg Lifetime Value\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Avg Lifetime Value\"}, \"Name\": \"dim_customers.Avg Lifetime Value\", \"NativeReferenceName\": \"Avg Lifetime Value\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 854.7,
+          "y": 78,
+          "z": 24
+        },
+        {
+          "config": "{\"name\": \"169ae70aeccdd7af2d0d\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1065.3, \"y\": 78, \"z\": 25, \"width\": 202.7, \"height\": 88, \"tabOrder\": 25}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_customers.Repeat Revenue Share\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat Revenue Share\"}, \"Name\": \"dim_customers.Repeat Revenue Share\", \"NativeReferenceName\": \"Repeat Revenue Share\"}]}, \"drillFilterOtherVisuals\": true}}",
+          "filters": "[]",
+          "height": 88,
+          "width": 202.7,
+          "x": 1065.3,
+          "y": 78,
+          "z": 25
+        },
+        {
+          "config": "{\"name\": \"398a419b18e7f73ac2a9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 174, \"z\": 30, \"width\": 300, \"height\": 262, \"tabOrder\": 30}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_customers.First Order Delivery\", \"active\": true}], \"Y\": [{\"queryRef\": \"dim_customers.Repeat 180d Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"First Order Delivery\"}, \"Name\": \"dim_customers.First Order Delivery\", \"NativeReferenceName\": \"First Order Delivery\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat 180d Rate\"}, \"Name\": \"dim_customers.Repeat 180d Rate\", \"NativeReferenceName\": \"Repeat 180d Rate\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Repeat rate: late vs on-time first order'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 300,
+          "x": 12,
+          "y": 174,
+          "z": 30
+        },
+        {
+          "config": "{\"name\": \"d5b0c19f81b5f17c839e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 320, \"y\": 174, \"z\": 31, \"width\": 300, \"height\": 262, \"tabOrder\": 31}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_customers.First Rating Band\", \"active\": true}], \"Y\": [{\"queryRef\": \"dim_customers.Repeat 180d Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"First Rating Band\"}, \"Name\": \"dim_customers.First Rating Band\", \"NativeReferenceName\": \"First Rating Band\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat 180d Rate\"}, \"Name\": \"dim_customers.Repeat 180d Rate\", \"NativeReferenceName\": \"Repeat 180d Rate\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"First Rating Band\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Repeat rate by first-order rating'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 300,
+          "x": 320,
+          "y": 174,
+          "z": 31
+        },
+        {
+          "config": "{\"name\": \"15e1042a583ff753162e\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 628, \"y\": 174, \"z\": 32, \"width\": 640, \"height\": 262, \"tabOrder\": 32}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_customers.first_order_category\", \"active\": true}], \"Y\": [{\"queryRef\": \"dim_customers.Repeat 180d Rate (n>=500)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_customers\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"first_order_category\"}, \"Name\": \"dim_customers.first_order_category\", \"NativeReferenceName\": \"first_order_category\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat 180d Rate (n>=500)\"}, \"Name\": \"dim_customers.Repeat 180d Rate (n>=500)\", \"NativeReferenceName\": \"Repeat 180d Rate (n>=500)\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"Repeat 180d Rate (n>=500)\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'First purchase category predicts loyalty (categories with 500+ customers)'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 262,
+          "width": 640,
+          "x": 628,
+          "y": 174,
+          "z": 32
+        },
+        {
+          "config": "{\"name\": \"c0c94c919be4615c2d19\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 12, \"y\": 444, \"z\": 33, \"width\": 360, \"height\": 268, \"tabOrder\": 33}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"days_to_second_purchase.gap_bucket\", \"active\": true}], \"Y\": [{\"queryRef\": \"days_to_second_purchase.Share of Repeat Customers\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"g\", \"Entity\": \"days_to_second_purchase\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"g\"}}, \"Property\": \"gap_bucket\"}, \"Name\": \"days_to_second_purchase.gap_bucket\", \"NativeReferenceName\": \"gap_bucket\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"g\"}}, \"Property\": \"Share of Repeat Customers\"}, \"Name\": \"days_to_second_purchase.Share of Repeat Customers\", \"NativeReferenceName\": \"Share of Repeat Customers\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"g\"}}, \"Property\": \"gap_bucket\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Days to second purchase: 76% within 6 months'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 360,
+          "x": 12,
+          "y": 444,
+          "z": 33
+        },
+        {
+          "config": "{\"name\": \"3cb1bd79875a2cb24849\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 380, \"y\": 444, \"z\": 34, \"width\": 470, \"height\": 268, \"tabOrder\": 34}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"customer_segments.segment\"}, {\"queryRef\": \"customer_segments.customers\"}, {\"queryRef\": \"customer_segments.pct_customers\"}, {\"queryRef\": \"customer_segments.pct_revenue\"}, {\"queryRef\": \"customer_segments.avg_value_brl\"}, {\"queryRef\": \"customer_segments.avg_recency_days\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"customer_segments\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment\"}, \"Name\": \"customer_segments.segment\", \"NativeReferenceName\": \"segment\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"customers\"}, \"Name\": \"customer_segments.customers\", \"NativeReferenceName\": \"customers\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"pct_customers\"}, \"Name\": \"customer_segments.pct_customers\", \"NativeReferenceName\": \"pct_customers\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"pct_revenue\"}, \"Name\": \"customer_segments.pct_revenue\", \"NativeReferenceName\": \"pct_revenue\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"avg_value_brl\"}, \"Name\": \"customer_segments.avg_value_brl\", \"NativeReferenceName\": \"avg_value_brl\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"avg_recency_days\"}, \"Name\": \"customer_segments.avg_recency_days\", \"NativeReferenceName\": \"avg_recency_days\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Customer segments: who to target'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 470,
+          "x": 380,
+          "y": 444,
+          "z": 34
+        },
+        {
+          "config": "{\"name\": \"180e543f57873d7691e0\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 858, \"y\": 444, \"z\": 35, \"width\": 410, \"height\": 268, \"tabOrder\": 35}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"cohort_retention.cohort_month\"}, {\"queryRef\": \"cohort_retention.cohort_size\"}, {\"queryRef\": \"cohort_retention.m1\"}, {\"queryRef\": \"cohort_retention.m2\"}, {\"queryRef\": \"cohort_retention.m3\"}, {\"queryRef\": \"cohort_retention.m4\"}, {\"queryRef\": \"cohort_retention.m5\"}, {\"queryRef\": \"cohort_retention.m6\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"cohort_retention\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"cohort_month\"}, \"Name\": \"cohort_retention.cohort_month\", \"NativeReferenceName\": \"cohort_month\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"cohort_size\"}, \"Name\": \"cohort_retention.cohort_size\", \"NativeReferenceName\": \"cohort_size\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"m1\"}, \"Name\": \"cohort_retention.m1\", \"NativeReferenceName\": \"m1\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"m2\"}, \"Name\": \"cohort_retention.m2\", \"NativeReferenceName\": \"m2\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"m3\"}, \"Name\": \"cohort_retention.m3\", \"NativeReferenceName\": \"m3\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"m4\"}, \"Name\": \"cohort_retention.m4\", \"NativeReferenceName\": \"m4\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"m5\"}, \"Name\": \"cohort_retention.m5\", \"NativeReferenceName\": \"m5\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"m6\"}, \"Name\": \"cohort_retention.m6\", \"NativeReferenceName\": \"m6\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"cohort_month\"}}}]}, \"drillFilterOtherVisuals\": true, \"hasDefaultSort\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Monthly cohorts: % buying again in month 1-6'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 268,
+          "width": 410,
+          "x": 858,
+          "y": 444,
+          "z": 35
+        }
+      ],
+      "width": 1280.0
+    }
+  ]
+}

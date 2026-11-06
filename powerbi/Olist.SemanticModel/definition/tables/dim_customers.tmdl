@@ -1,0 +1,198 @@
+table dim_customers
+	lineageTag: fbd498cd-a1db-328c-224e-6b359d435b56
+
+	measure 'Customer Count' = COUNTROWS(dim_customers)
+		formatString: #,0
+		displayFolder: Retention
+		lineageTag: 230713e0-e81a-64f2-2e5f-2094b5076d6a
+
+	measure 'Repeat Customers' = SUM(dim_customers[is_repeat])
+		formatString: #,0
+		displayFolder: Retention
+		lineageTag: a056ca40-804c-dc81-6e07-dcc2e98af211
+
+	measure 'Repeat Rate' = DIVIDE([Repeat Customers], [Customer Count])
+		formatString: 0.00%
+		displayFolder: Retention
+		lineageTag: 012dd37e-ba94-1228-10a1-88c810733bc0
+
+	measure 'Repeat 180d Rate' = CALCULATE(AVERAGE(dim_customers[repeat_180d]), dim_customers[Full 180d Window] = 1)
+		formatString: 0.00%
+		displayFolder: Retention
+		lineageTag: 519f8d8a-752d-9ce1-9e5e-9cf9c6a3dd57
+
+	measure 'Repeat 180d Rate (n>=500)' = IF(CALCULATE(COUNTROWS(dim_customers), dim_customers[Full 180d Window] = 1) >= 500, [Repeat 180d Rate])
+		formatString: 0.00%
+		displayFolder: Retention
+		lineageTag: 1c133f59-61f1-ce37-48aa-832f2f518c35
+
+	measure 'Avg Lifetime Value' = AVERAGE(dim_customers[lifetime_value])
+		formatString: #,0.00
+		displayFolder: Retention
+		lineageTag: 14cb3ef9-606e-a7a9-8b22-f3e98a98b8ce
+
+	measure 'Repeat Revenue Share' = DIVIDE(CALCULATE(SUM(dim_customers[lifetime_value]), dim_customers[is_repeat] = 1), SUM(dim_customers[lifetime_value]))
+		formatString: 0.0%
+		displayFolder: Retention
+		lineageTag: 59d2bf09-e21f-6723-5aa4-2496109a524e
+
+	column customer_id
+		dataType: string
+		lineageTag: e64a9db4-87bf-fd35-bd8f-524b1946dcce
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 695adf39-df38-a67a-cff7-451f53b7c03a
+		summarizeBy: none
+		sourceColumn: n_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_purchase_days
+		dataType: int64
+		formatString: 0
+		lineageTag: e3434f41-6c51-ad95-212c-463d14ff3eed
+		summarizeBy: none
+		sourceColumn: n_purchase_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column lifetime_value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e5e8f71a-9ef9-64d4-60d3-a996f63422e9
+		summarizeBy: none
+		sourceColumn: lifetime_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_purchase_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 51a8fc29-d05f-5a5d-5b3d-1efcc0e83e9a
+		summarizeBy: none
+		sourceColumn: first_purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_purchase_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d8158c72-388b-981c-d08a-96de72d2fbcd
+		summarizeBy: none
+		sourceColumn: last_purchase_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_repeat
+		dataType: int64
+		formatString: 0
+		lineageTag: 48e99ce1-9dbd-5d70-2985-97e21a2e4780
+		summarizeBy: none
+		sourceColumn: is_repeat
+
+		annotation SummarizationSetBy = Automatic
+
+	column repeat_180d
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c9ece9e-6829-a15f-05ca-71953e45965e
+		summarizeBy: none
+		sourceColumn: repeat_180d
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_late
+		dataType: int64
+		formatString: 0
+		lineageTag: 32904547-a4a3-db91-a4cd-af06343bde6f
+		summarizeBy: none
+		sourceColumn: first_order_late
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_review
+		dataType: double
+		formatString: 0.0
+		lineageTag: 0a0c1014-b610-c162-ff5f-53651f40d659
+		summarizeBy: none
+		sourceColumn: first_order_review
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_category
+		dataType: string
+		lineageTag: 1b12885b-5bfa-997d-bf07-f8e127eae11e
+		summarizeBy: none
+		sourceColumn: first_order_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state
+		dataType: string
+		lineageTag: 44437efe-a2f9-fc1f-e162-d8feb65dc0e3
+		summarizeBy: none
+		sourceColumn: customer_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_payment_type
+		dataType: string
+		lineageTag: f962ce21-4bf4-eddb-a099-7390c91c4176
+		summarizeBy: none
+		sourceColumn: first_payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_order_value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 72470b4f-6f44-3a8c-9898-01c26f14cbef
+		summarizeBy: none
+		sourceColumn: first_order_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Order Delivery'
+		dataType: string
+		lineageTag: 23450463-1e5f-d007-f213-dd05346e951e
+		summarizeBy: none
+		sourceColumn: First Order Delivery
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Rating Band'
+		dataType: string
+		lineageTag: 43c1f065-e52d-9833-a005-52cdc3fd6c5c
+		summarizeBy: none
+		sourceColumn: First Rating Band
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full 180d Window'
+		dataType: int64
+		formatString: 0
+		lineageTag: db08cc28-5dcd-56c7-4824-424b1fdd3251
+		summarizeBy: none
+		sourceColumn: Full 180d Window
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_customers.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"customer_id", type text}, {"n_orders", Int64.Type}, {"n_purchase_days", Int64.Type}, {"lifetime_value", type number}, {"first_purchase_date", type date}, {"last_purchase_date", type date}, {"is_repeat", Int64.Type}, {"repeat_180d", Int64.Type}, {"first_order_late", Int64.Type}, {"first_order_review", type number}, {"first_order_category", type text}, {"customer_state", type text}, {"first_payment_type", type text}, {"first_order_value", type number}}, "en-US"),
+				    WithDelivery = Table.AddColumn(Typed, "First Order Delivery", each if [first_order_late] = 1 then "Late" else "On time / early", type text),
+				    WithBand = Table.AddColumn(WithDelivery, "First Rating Band", each let s = [first_order_review] in if s = null then "No review" else if s <= 2 then "1-2 stars" else if s <= 3 then "3 stars" else "4-5 stars", type text),
+				    WithWindow = Table.AddColumn(WithBand, "Full 180d Window", each if [first_purchase_date] < #date(2018, 3, 1) then 1 else 0, Int64.Type)
+				in
+				    WithWindow
+

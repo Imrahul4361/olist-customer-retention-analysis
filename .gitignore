@@ -19,3 +19,8 @@ Thumbs.db
 # personal interview preparation (kept local, not published)
 docs/Interview_Handbook.html
 docs/interview_prep.md
+
+# Power BI local files (cache with data, per-user settings)
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf
+*.pbix

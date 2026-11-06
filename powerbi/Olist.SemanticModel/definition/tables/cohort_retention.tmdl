@@ -1,0 +1,85 @@
+table cohort_retention
+	lineageTag: fdc74080-33dc-d7a8-cb54-c41658cb1d94
+
+	column cohort_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 9d5820f0-7d4e-fb2c-c2e8-f358e556fd5f
+		summarizeBy: none
+		sourceColumn: cohort_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column cohort_size
+		dataType: int64
+		formatString: #,0
+		lineageTag: 64d83dbf-0ab1-5bef-9a23-3c0eacfaa0fe
+		summarizeBy: none
+		sourceColumn: cohort_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column m1
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: 135245b5-e756-4242-b9ad-1532b45aa449
+		summarizeBy: none
+		sourceColumn: m1
+
+		annotation SummarizationSetBy = Automatic
+
+	column m2
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: 0af138cd-73b6-21d4-5916-93d56d89930b
+		summarizeBy: none
+		sourceColumn: m2
+
+		annotation SummarizationSetBy = Automatic
+
+	column m3
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: d77c5310-ce94-9711-4759-aa2aa58e8224
+		summarizeBy: none
+		sourceColumn: m3
+
+		annotation SummarizationSetBy = Automatic
+
+	column m4
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: a8fbf315-bd07-4124-3a9a-935e9941d7ce
+		summarizeBy: none
+		sourceColumn: m4
+
+		annotation SummarizationSetBy = Automatic
+
+	column m5
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: 0c2ca794-861a-1629-606c-2c74a5bb53fa
+		summarizeBy: none
+		sourceColumn: m5
+
+		annotation SummarizationSetBy = Automatic
+
+	column m6
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: 4498ce2a-55b0-e9b2-c762-d1dbe7c8ecaa
+		summarizeBy: none
+		sourceColumn: m6
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cohort_retention = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "cohort_retention.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"cohort_month", type date}, {"cohort_size", Int64.Type}, {"m1", type number}, {"m2", type number}, {"m3", type number}, {"m4", type number}, {"m5", type number}, {"m6", type number}}, "en-US")
+				in
+				    Typed
+

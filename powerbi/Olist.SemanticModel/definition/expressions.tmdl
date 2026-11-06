@@ -1,0 +1,5 @@
+expression DataFolder = "D:\OneDrive\Desktop\olist-customer-retention-analysis\data\processed\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b0cf1127-b7df-2a2d-c09e-e283b640c656
+
+	annotation PBI_ResultType = Text
+
